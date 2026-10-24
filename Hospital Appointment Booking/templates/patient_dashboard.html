@@ -1,0 +1,15 @@
+
+<h2>Welcome, {{ session.full_name }} 👋</h2>
+<div class="card-grid" style="margin-top:20px;">
+  <div class="card text-center">
+    <h3>Find a Doctor</h3>
+    <p class="text-muted" style="margin-bottom:14px;">Browse doctors by department and book a slot.</p>
+    <a href="{{ url_for('doctor_list') }}" class="btn">Browse Doctors</a>
+  </div>
+  <div class="card text-center">
+    <h3>My Appointments</h3>
+    <p class="text-muted" style="margin-bottom:14px;">View, track or cancel your appointments.</p>
+    <a href="{{ url_for('my_appointments') }}" class="btn btn-outline">View Appointments</a>
+  </div>
+</div>
+

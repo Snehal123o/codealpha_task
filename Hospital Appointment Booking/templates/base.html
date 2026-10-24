@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Hospital Appointment System{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="brand" href="{{ url_for('dashboard') }}">🏥 CityCare Hospital</a>
+  <div class="nav-links">
+    {% if session.user_id %}
+      {% if session.role == 'patient' %}
+        <a href="{{ url_for('patient_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('doctor_list') }}">Find a Doctor</a>
+        <a href="{{ url_for('my_appointments') }}">My Appointments</a>
+      {% elif session.role == 'doctor' %}
+        <a href="{{ url_for('doctor_dashboard') }}">My Appointments</a>
+      {% elif session.role == 'admin' %}
+        <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+        <a href="{{ url_for('all_appointments') }}">All Appointments</a>
+      {% endif %}
+      <span class="nav-user">Hi, {{ session.full_name }}</span>
+      <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+    
+  </div>
+</nav>
+
+<div class="container">
+ 
+        <div class="flash flash-{{ category }}">{{ message }}</div>
+      
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+<h2>My Appointments</h2>
+<table>
+  <thead>
+    <tr><th>Doctor</th><th>Department</th><th>Date</th><th>Time</th><th>Reason</th><th>Status</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td>Dr. {{ appt.doctor_name }}</td>
+        <td>{{ appt.department }}</td>
+        <td>{{ appt.appointment_date }}</td>
+        <td>{{ appt.time_slot }}</td>
+        <td>{{ appt.reason or '-' }}</td>
+        <td><span class="status-{{ appt.status }}">{{ appt.status|capitalize }}</span></td>
+        <td>
+          
+            <a href="{{ url_for('cancel_appointment', appointment_id=appt.id) }}"
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Cancel this appointment?');">Cancel</a>
+         
+        </td>
+      </tr>
+   
+      <tr><td colspan="7" class="text-center text-muted">No appointments booked yet.</td></tr>
+    
+  </tbody>
+</table>
+

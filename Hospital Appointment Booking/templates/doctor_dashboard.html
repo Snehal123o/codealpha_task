@@ -1,0 +1,29 @@
+
+<h2>Welcome, Dr. {{ session.full_name }}</h2>
+<p class="text-muted">{{ doctor.specialization }} — {{ doctor.department }}</p>
+
+<table style="margin-top:16px;">
+  <thead>
+    <tr><th>Patient</th><th>Date</th><th>Time</th><th>Reason</th><th>Status</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td>{{ appt.patient_name }}</td>
+        <td>{{ appt.appointment_date }}</td>
+        <td>{{ appt.time_slot }}</td>
+        <td>{{ appt.reason or '-' }}</td>
+        <td><span class="status-{{ appt.status }}">{{ appt.status|capitalize }}</span></td>
+        <td>
+            <a href="{{ url_for('update_appointment_status', appointment_id=appt.id, new_status='confirmed') }}" class="btn btn-sm btn-outline">Confirm</a>
+          
+            <a href="{{ url_for('update_appointment_status', appointment_id=appt.id, new_status='completed') }}" class="btn btn-sm btn-success">Mark Completed</a>
+          
+        </td>
+      </tr>
+    
+      <tr><td colspan="6" class="text-center text-muted">No appointments yet.</td></tr>
+   
+  </tbody>
+</table>
+

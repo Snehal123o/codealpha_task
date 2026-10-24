@@ -1,0 +1,50 @@
+
+
+<div class="stats-grid">
+  <div class="stat-box"><h3>{{ stats.total_doctors }}</h3><p>Doctors</p></div>
+  <div class="stat-box"><h3>{{ stats.total_patients }}</h3><p>Patients</p></div>
+  <div class="stat-box"><h3>{{ stats.total_appointments }}</h3><p>Total Appointments</p></div>
+  <div class="stat-box"><h3>{{ stats.pending_appointments }}</h3><p>Pending</p></div>
+</div>
+
+<div class="actions-row">
+  <a href="{{ url_for('add_doctor') }}" class="btn">+ Add Doctor</a>
+  <a href="{{ url_for('all_appointments') }}" class="btn btn-outline">View All Appointments</a>
+</div>
+
+<h3>Doctors</h3>
+<table style="margin-bottom:24px;">
+  <thead>
+    <tr><th>Name</th><th>Department</th><th>Specialization</th><th>Active</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td>Dr. {{ doctor.full_name }} ({{ doctor.username }})</td>
+        <td>{{ doctor.department }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>{% if doctor.is_active %}✅{% else %}❌{% endif %}</td>
+        <td><a href="{{ url_for('toggle_doctor', doctor_id=doctor.id) }}" class="btn btn-sm btn-outline">Toggle</a></td>
+      </tr>
+  
+  </tbody>
+</table>
+
+<h3>Recent Appointments</h3>
+<table>
+  <thead>
+    <tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+   
+      <tr>
+        <td>{{ appt.patient_name }}</td>
+        <td>Dr. {{ appt.doctor_name }}</td>
+        <td>{{ appt.appointment_date }}</td>
+        <td>{{ appt.time_slot }}</td>
+        <td><span class="status-{{ appt.status }}">{{ appt.status|capitalize }}</span></td>
+      </tr>
+ 
+  </tbody>
+</table>
+

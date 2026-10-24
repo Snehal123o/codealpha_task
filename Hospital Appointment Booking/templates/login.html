@@ -1,0 +1,22 @@
+
+<div class="card auth-box">
+  <h2 class="text-center">Login</h2>
+  <form method="POST">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" required autofocus>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-full">Login</button>
+  </form>
+  <p class="text-center text-muted" style="margin-top:14px;">
+    New patient? <a href="{{ url_for('register') }}">Register here</a>
+  </p>
+  <p class="text-center text-muted" style="margin-top:6px;">
+    Admin login: <strong>admin</strong> / <strong>admin123</strong>
+  </p>
+</div>
+
